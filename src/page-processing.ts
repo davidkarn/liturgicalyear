@@ -86,43 +86,6 @@ const parse_page = (path: string): Segment[] => {
               ? SegmentType.Heading
               : SegmentType.EngText)) }))], []); };
 
-const parse_page_txt = (path) => {
-  const txt    = fs.readFileSync(path, 'utf8');
-  const blocks = txt.split(/\n\n/).slice(2);
-  const page   = [];
-  let left_col = null;
-
-  for (let i in blocks) {
-    let paragraph = blocks[i].split("\n");
-    const width   = get_paragraph_width(paragraph);
-    paragraph     = dehyphenate(paragraph);
-    
-    if (width <= 35) {
-      if (left_col) {
-        page.push({
-          type:  TextBlockType.LatinEnglish,
-          latin: left_col,
-          eng:   paragraph });
-        
-        left_col = null; }
-      
-      else
-        left_col = paragraph; }
-
-    else {
-      if (left_col) {
-        page.push({
-          type:  TextBlockType.English,
-          eng:   left_col });
-        
-        left_col = null; }
-      
-      page.push({
-        type:  TextBlockType.English,
-        eng:   paragraph }); }}
-  
-  return page; };
-
 const get_paragraph_width = (paragraph: string[]): number => {
   return Math.max.apply(
     Math,
@@ -158,4 +121,11 @@ const parse_toc = (toc) => {
       pages: section.pages.reduce(
         (page1, page2) => connect_pages(page1, page2), [])})); }
 
-console.log(parse_toc(toc)[0].pages);
+const write_section = (section) => {
+  fs.writeFileSync(
+    '../app_data/liturgical_year/'
+      + [section.volume, section.period, section.day, section.type].join('_')
+      + '.json',
+    JSON.stringify(section)); };
+
+parse_toc(toc).map(write_section);

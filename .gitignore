@@ -3,3 +3,4 @@ vol*/*.png
 *#*
 *~
 src/*.js
+app_data/liturgical_year/*

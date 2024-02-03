@@ -1,25 +1,25 @@
 enum DayType {
-  CalendarDate,
-  SeptuagesimaWeek,
-  SexagesesimaWeek,
-  QuinquagesimaWeek,
-  AfterAshWednesday,
-  FeastDay,
-  Sunday,
-  Vigil};
+  CalendarDate         = 'CalendarDate',
+  SeptuagesimaWeek     = 'SeptuagesimaWeek',
+  SexagesesimaWeek     = 'SexagesesimaWeek',
+  QuinquagesimaWeek    = 'QuinquagesimaWeek',
+  AfterAshWednesday    = 'AfterAshWednesday',
+  FeastDay             = 'FeastDay',
+  Sunday               = 'Sunday',
+  Vigil                = 'Vigil'};
 
 enum CalendarPeriods {
-  Advent,
-  Christmastide,
-  Epihpanytide,
-  Septuagesima,
-  Sexagesima,
-  Quinquagesima,
-  Lent,
-  HolyWeek,
-  EasterTide,
-  Pentacost,
-  SeasonAfterPentacost};
+  Advent               = 'Advent',
+  Christmastide        = 'Christmastide',
+  Epihpanytide         = 'Epihpanytide',
+  Septuagesima         = 'Septuagesima',
+  Sexagesima           = 'Sexagesima',
+  Quinquagesima        = 'Quinquagesima',
+  Lent                 = 'Lent',
+  HolyWeek             = 'HolyWeek',
+  EasterTide           = 'EasterTide',
+  Pentacost            = 'Pentacost',
+  SeasonAfterPentacost = 'SeasonAfterPentacost'};
 
 exports.toc = [
   {
